@@ -242,4 +242,8 @@ describe('ERC165Checker', function () {
 
     expect(gasUsed2).to.be.lessThan(250_000n); // (2+5)*30k + 21k + some margin
   });
+
+  it("should return false for invalid interface ID 0xffffffff", async function () {
+  expect(await ERC165Checker.supportsInterface(unknown.address, "0xffffffff")).to.equal(false);
+  });
 });
